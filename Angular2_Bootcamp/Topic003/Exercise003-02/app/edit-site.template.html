@@ -1,0 +1,19 @@
+<h3>Specify the name of the Dive Site:</h3>
+<Div class="row">
+    <Div class="col-sm-5">
+        <input #siteNameBox class="form-control input-lg" type="text" [value]="siteName" placeholder="siteName"
+													(keyup)="siteName=siteNameBox.value"
+													 (keyup.enter)="save()"/>
+    </Div>
+</Div>
+
+<Div class="row" style="margin-top: 12px;">
+    <Div class="col-sm-6">
+        <button class="btn btn-success btn-small"
+		(click)="save()"
+		 [disabled]="!siteName"> Add </button>
+		
+        <a class="btn btn-warning btn-small"
+		routerLink="/list"> Cancel </a>
+    </Div>
+</Div>

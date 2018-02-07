@@ -1,0 +1,17 @@
+<Div class="row">
+	<Div class="col-sm-12">
+		<a class="btn btn-primary btn-lg" routerLink="/add">Add New Site</a>
+		<button class="btn btn-success btn-small" (click)="getAll()">getAll </button>
+	</Div>
+</Div>
+
+<h2>List Of Div Sites</h2>
+<Div class="row" *ngFor="let site of sites">
+	<Div class="col-sm-8">
+		<h4>{{site.id}} : {{site.name}} </h4>
+	</Div>
+	<Div class="col-sm-4" style="margine-top:5px;">
+		<button class="btn btn-warning btn-small" [routerLink]="['/edit', site.id]"> Edit </button>
+		<button class="btn btn-danger btn-small" (click)="delete(site)"> Delete </button>
+	</Div>
+</Div>

@@ -1,0 +1,16 @@
+<Div class="row">
+	<Div class="col-sm-12">
+		<button class="btn btn-primary btn-lg" (click)="add()">Add New Site</button>
+	</Div>
+</Div>
+
+<h2>List Of Div Sites</h2>
+<Div class="row" *ngFor="let site of sites">
+	<Div class="col-sm-8">
+		<h4>{{site.id}} : {{site.name}} </h4>
+	</Div>
+	<Div class="col-sm-4" style="margine-top:5px;">
+		<button class="btn btn-warning btn-small" (click)="edit(site)"> Edit </button>
+		<button class="btn btn-danger btn-small" (click)="delete(site)"> Delete </button>
+	</Div>
+</Div>

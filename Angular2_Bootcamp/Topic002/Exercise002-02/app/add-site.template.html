@@ -1,0 +1,19 @@
+<h3>Specify the name of the Dive Site:</h3>
+<Div class="row">
+    <Div class="col-sm-5">
+        <input #siteNameBox class="form-control input-lg" type="text" placeholder="name"  
+													(keyup)="siteName=siteNameBox.value"
+													 (keyup.enter)="added()"/>
+    </Div>
+</Div>
+
+<Div class="row" style="margin-top: 12px;">
+    <Div class="col-sm-6">
+        <button class="btn btn-success btn-small"
+		(click)="added()"
+		 [disabled]="!siteName"> Add </button>
+		
+        <button class="btn btn-warning btn-small"
+		(click)="cancel()"> Cancel </button>
+    </Div>
+</Div>

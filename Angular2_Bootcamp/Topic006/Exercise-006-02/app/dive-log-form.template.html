@@ -1,0 +1,97 @@
+<form *ngIf="!submited"
+	novalidate
+	(ngSubmit)="submitForm()"
+	#entryForm="ngForm">
+<div class="row">
+
+    <div class="col-md-3">
+         <div class="form-group"
+			 [class.has-error]="siteCtrl.invalid">
+			 <label for="site">Dive Site</label>
+			 <input class="form-control" id="site"
+			 #siteCtrl="ngModel"
+			 [(ngModel)]="entry.site" name="site"
+					required 
+					pattern="[A-Za-z]*"
+					placeholder="Dive site">
+					 <span *ngIf="siteCtrl.errors?.required" class="help-block">
+						 Please Specify a site name
+					 </span>
+			         <span *ngIf="siteCtrl.errors?.pattern" class="help-block">
+						Only alphabet is allowed
+					 </span>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+         <div class="form-group"
+			  [class.has-error]="locationCtrl.invalid">
+			 <label for="site">Location</label>
+			 <input class="form-control" id="location"
+			 #locationCtrl="ngModel"
+			[(ngModel)]="entry.location" name="location" required placeholder="Location">
+        </div>
+    </div>
+    <div class="col-md-3">
+         <div class="form-group"
+			  [class.has-error]="depthCtrl.invalid">
+			 <label for="site">Max.Depth</label>
+			 <input class="form-control" id="depth"
+			 #depthCtrl="ngModel"
+			 [(ngModel)]="entry.depth" name="depth" required maxlength="3" placeholder="Depth">
+        </div>
+    </div>
+	<div class="col-md-3">
+         <div class="form-group"
+			  [class.has-error]="timeCtrl.invalid">
+			 <label for="site">Bottom time</label>
+			 <input class="form-control" id="time"
+			 #timeCtrl="ngModel"
+			 [(ngModel)]="entry.time" name="time" required maxlength="3"  placeholder="Time">
+        </div>
+    </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="well">
+<div class="form-group">
+	<label for ="comments">Comments</label>
+	<textarea class="form-control" id="comments" rows="5"
+	[(ngModel)]="entry.comments" name="comments"></textarea>
+	
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="well">
+<div class="checkbox">
+	<label>
+	<input type="checkbox" name="favorite" checked
+	[(ngModel)]="entry.isFavorite" name="isFavorite">
+	Mark as Favorite			  
+	</label>
+</div>
+<div class="form-group">
+	<label>Special dive</label>
+	<div class="radio"
+		*ngFor="let diveType of specialDives">
+		<label>
+		<input type="radio" name="special" [value]="diveType"
+		[(ngModel)]="entry.special" name="special" >
+		{{diveType}}
+		</label>
+	</div>
+</div>	
+</div>
+</div>
+</div>
+
+<pre>{{entry | json}}</pre>
+<button class="btn btn-primary" type="submit"
+		[disabled]="entryForm.invalid">Submit </button>
+
+</form>
+<div *ngIf="submited">
+<h2>The form has been submitted successfully</h2>
+<pre>{{entry | json}} </pre>
+</div>
